@@ -43,28 +43,24 @@ class LinkedList {
     }
 
     pop() {
-        let item = this.at(this._size - 2);
-        item.nextNode = null;
+        let prevItem = this.at(this._size - 2);
+        prevItem.nextNode = null;
     }
 
     contains(value) {
         let item = this._head;
-        if (item.value === value) return true;
-        while (item.nextNode !== null) {
-            item = item.nextNode;
+        while (item !== null) {
             if (item.value === value) return true;
+            item = item.nextNode;
         }
         return false;
     }
 
     find(value) {
         let item = this._head;
-        let count = 0
-        if (item.value === value) return count;
-        while (item.nextNode !== null) {
-            item = item.nextNode;
-            count ++;
+        for (let count = 0; item !== null; count++){
             if (item.value === value) return count;
+            item = item.nextNode;
         }
         return null;
     }
